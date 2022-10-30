@@ -1,0 +1,10 @@
+<div>
+  <div *ngIf="months">
+    <ul>
+      <li *ngFor="let month of months.months">
+        <a (click)="navigate(month.id)" class="month-item">{{ month.name }}</a>
+      </li>
+    </ul>
+  </div>
+  <!-- <button (click)="addMonth()">Add month</button> -->
+</div>

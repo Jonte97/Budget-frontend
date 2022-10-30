@@ -1,0 +1,32 @@
+.add-outcome-form {
+  padding: 0 5%;
+  .submit-wrapper {
+    display: flex;
+    justify-content: center;
+    .btn-submit {
+    }
+  }
+  .form-inputs {
+    display: flex;
+
+    .form-control-input {
+      height: 100px;
+      align-content: center;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      width: 50%;
+      input {
+        width: 70%;
+      }
+    }
+    .form-control-checkboxes {
+      height: 100px;
+      align-content: center;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  }
+}

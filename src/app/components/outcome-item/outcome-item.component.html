@@ -1,0 +1,33 @@
+<div class="outcome-item-component">
+  <div *ngIf="!editMode; else editTemplate">
+    <div class="outcome-item">
+      <span> {{ outcome.name }}: </span>
+      <span>
+        {{ outcome.amount }}
+      </span>
+      <button class="btn btn-edit" (click)="edit()">Ändra</button>
+      <button class="btn btn-delete" (click)="deleteItem()">X</button>
+    </div>
+  </div>
+
+  <ng-template #editTemplate>
+    <div class="outcome-edit">
+      <input
+        class="input-text"
+        [name]="outcome.id"
+        type="text"
+        [value]="outcome.name"
+      />
+      <input
+        class="input-text"
+        [name]="outcome.id"
+        type="text"
+        [value]="outcome.amount"
+      />
+      <button class="btn btn-save" (click)="save()">Spara</button>
+      <button class="btn btn-delete">X</button>
+    </div>
+  </ng-template>
+
+  <div class="form-control-group"></div>
+</div>

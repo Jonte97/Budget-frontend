@@ -1,0 +1,19 @@
+<section>
+  <div class="outcome-settings">
+    <label for="only-show-category">Visa alla</label>
+    <input
+      (change)="toggleFilter()"
+      name="only-show-category"
+      type="checkbox"
+    />
+  </div>
+  <ul class="outcome-list-component" *ngIf="displayedOutcomes.length > 0">
+    <li *ngFor="let outcome of displayedOutcomes">
+      <app-outcome-item
+        (saveOutcome)="outcomeUpdate.emit()"
+        (deleteOutcome)="outcomeUpdate.emit()"
+        [outcome]="outcome"
+      ></app-outcome-item>
+    </li>
+  </ul>
+</section>

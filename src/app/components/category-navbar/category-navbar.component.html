@@ -1,0 +1,15 @@
+<nav class="category-navbar-component">
+  <ul *ngIf="activeCategory" class="category-list">
+    <li
+      class="category-nav-item"
+      *ngFor="let category of categories; index as i"
+    >
+      <a
+        (click)="changeCategory(category.id)"
+        [ngClass]="category.id === activeCategory ? 'active' : ''"
+        class="category-link"
+        >{{ category.name }}</a
+      >
+    </li>
+  </ul>
+</nav>

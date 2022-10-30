@@ -1,0 +1,30 @@
+.btn {
+  padding: 0.5rem 1rem;
+  background-color: $theme-primary;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  outline: none;
+}
+
+.input-text {
+  border-radius: 5px;
+  padding: 0 1rem;
+  border: 1px solid rgb(124, 124, 124);
+  outline: none;
+  height: 28px;
+}
+.input-checkbox {
+  width: 15px;
+  height: 15px;
+}
+.btn-edit {
+  background-color: #3581b4;
+}
+.btn-save {
+  background-color: $theme-primary;
+}
+
+.btn-delete {
+  background-color: #b4354a;
+}

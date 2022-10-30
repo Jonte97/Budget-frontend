@@ -1,0 +1,26 @@
+.outcome-item-component {
+  .form-control-group {
+    display: flex;
+    flex-direction: column;
+  }
+  .outcome-edit {
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    width: 100%;
+    input {
+      width: 30%;
+    }
+  }
+  .outcome-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    width: 100%;
+    span {
+      width: 30%;
+      padding: 0 1rem;
+    }
+  }
+}

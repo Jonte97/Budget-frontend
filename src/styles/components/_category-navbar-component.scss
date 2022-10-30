@@ -1,0 +1,16 @@
+.category-navbar-component {
+  .category-list {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+  }
+  .category-nav-item {
+    a {
+      padding: 0.25rem 0;
+    }
+  }
+  .active {
+    border-bottom: 2px solid $theme-primary;
+    color: $theme-primary;
+  }
+}

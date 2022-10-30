@@ -1,0 +1,14 @@
+<div class="month-component">
+  <app-category-navbar
+    (changeActiveCategory)="setActiveCategory($event)"
+    *ngIf="categories.length > 0"
+    [categories]="categories"
+  ></app-category-navbar>
+  <app-add-outcome (emitFormValue)="formSubmitted($event)"></app-add-outcome>
+  <app-outcome-list
+    *ngIf="outcomes.length > 0"
+    [activeCategory]="activeCategory"
+    [outcomes]="outcomes"
+    (outcomeUpdate)="getOutcomes()"
+  ></app-outcome-list>
+</div>

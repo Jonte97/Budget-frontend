@@ -1,0 +1,49 @@
+<form [formGroup]="formgroup" (ngSubmit)="submit()" class="add-outcome-form">
+  <div class="form-inputs">
+    <div class="form-control-input">
+      <div>
+        <input
+          autocomplete="off"
+          formControlName="name"
+          placeholder="Namn"
+          name="name"
+          class="name input-text"
+          type="text"
+        />
+      </div>
+      <div>
+        <input
+          autocomplete="off"
+          formControlName="amount"
+          placeholder="600"
+          name="amount"
+          class="amount input-text"
+          type="number"
+        />
+      </div>
+    </div>
+    <div class="form-control-checkboxes">
+      <div>
+        <input
+          formControlName="reoccour"
+          name="reoccur"
+          class="reoccur input-checkbox"
+          type="checkbox"
+        />
+        <span>Återkommande</span>
+      </div>
+      <div>
+        <input
+          formControlName="addExpense"
+          name="quickAdd"
+          class="quick-add input-checkbox"
+          type="checkbox"
+        />
+        <span>Lägg utgift</span>
+      </div>
+      <div class="submit-wrapper">
+        <input class="btn btn-submit" type="submit" value="Add" />
+      </div>
+    </div>
+  </div>
+</form>
