@@ -26,7 +26,6 @@ export class OutcomeItemComponent implements OnInit {
   }
   save() {
     this.editMode = false;
-    console.log('new value is ', this.outcome.amount)
     this.outcomeSub$ = this.baseApiService.put(`/outcomes/${this.outcome.id}`, this.outcome).subscribe(
       () => {
         this.deleteOutcome.emit();
@@ -35,7 +34,6 @@ export class OutcomeItemComponent implements OnInit {
     this.saveOutcome.emit(this.outcome.id);
   }
   deleteItem() {
-    console.log('doing stuff')
     this.outcomeSub$ = this.baseApiService.delete(`/outcomes/${this.outcome.id}`).subscribe(
       () => {
         this.deleteOutcome.emit();

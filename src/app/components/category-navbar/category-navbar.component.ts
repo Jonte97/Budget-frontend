@@ -18,7 +18,6 @@ export class CategoryNavbarComponent implements OnInit {
   private initialActiveCategory() {
     if (this.categories.length > 0) {
       this.activeCategory = this.categories[0].id;
-      console.log('initiated and emitting', this.activeCategory)
       this.changeActiveCategory.emit(this.activeCategory);
     }
   }

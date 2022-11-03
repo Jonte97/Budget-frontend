@@ -1,0 +1,5 @@
+<section *ngIf="month" class="month-navigator-component">
+  <button (click)="getOrCreateMonth(false)">Tillbaka</button>
+  <h1>{{ month.name }}</h1>
+  <button (click)="getOrCreateMonth(true)">Nästa</button>
+</section>

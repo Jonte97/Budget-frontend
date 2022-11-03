@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CategoryNavbarComponent } from './components/category-navbar/category-navbar.component';
 import { OutcomeListComponent } from './components/outcome-list/outcome-list.component';
 import { OutcomeItemComponent } from './components/outcome-item/outcome-item.component';
+import { MonthNavigatorComponent } from './components/month-navigator/month-navigator.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { OutcomeItemComponent } from './components/outcome-item/outcome-item.com
     CategoryNavbarComponent,
     OutcomeListComponent,
     OutcomeItemComponent,
+    MonthNavigatorComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],
   providers: [{ provide: 'environment', useValue: environment }],

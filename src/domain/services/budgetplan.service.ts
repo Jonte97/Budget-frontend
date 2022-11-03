@@ -10,8 +10,10 @@ import { Household } from '../models/storage-models/storageInterfaces';
 })
 export class BudgetplanService {
 
-  constructor(private httpClient: BaseApiService,
-    private sessionStorageService: SessionStorageService) { }
+  constructor(
+    private httpClient: BaseApiService,
+    private sessionStorageService: SessionStorageService
+  ) { }
 
   getBudgetplan(): Observable<GetBudgetPlanResponse> {
     const householdId = this.sessionStorageService.getValue<Household>('household');

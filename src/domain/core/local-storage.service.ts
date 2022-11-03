@@ -12,7 +12,6 @@ export class LocalStorageService {
 
   getValue<T>(name: string): T | null {
     const result = localStorage.getItem(name);
-    console.log(result)
     if (result != null) {
       return JSON.parse(result);
     }

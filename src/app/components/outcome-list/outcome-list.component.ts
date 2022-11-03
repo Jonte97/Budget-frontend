@@ -11,7 +11,7 @@ export class OutcomeListComponent implements OnInit, OnChanges {
   @Output() outcomeUpdate: EventEmitter<void> = new EventEmitter();
   displayedOutcomes: Outcome[] = [];
 
-  settings: Settings = { showAll: false };
+  private settings: Settings = { showAll: false };
 
 
   constructor() {
@@ -24,11 +24,13 @@ export class OutcomeListComponent implements OnInit, OnChanges {
     this.displayedOutcomes = this.outcomes;
     this.updateList();
   }
-  toggleFilter() {
+
+  public toggleFilter() {
     this.settings.showAll = !this.settings.showAll;
     this.updateList();
   }
-  updateList() {
+
+  public updateList() {
     if (this.settings.showAll === true) {
       this.displayedOutcomes = this.outcomes;
     }
@@ -37,12 +39,8 @@ export class OutcomeListComponent implements OnInit, OnChanges {
         (obj) => obj.categoryId === this.activeCategory)
     }
   }
-
-  outcomeUpdates() {
-    this.outcomeUpdate.emit();
-  }
-
 }
+
 interface Settings {
   showAll: boolean;
 }

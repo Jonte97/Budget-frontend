@@ -12,7 +12,6 @@ export class SessionStorageService {
 
   getValue<T>(name: string): T | null {
     const result = sessionStorage.getItem(name);
-    console.log(result)
     if (result != null) {
       return JSON.parse(result);
     }

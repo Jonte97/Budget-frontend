@@ -23,8 +23,6 @@ export class BudgetplanComponent implements OnInit, OnDestroy {
 
 
   constructor(
-    private httpClient: BaseApiService,
-    private sessionStorageService: SessionStorageService,
     private monthService: MonthService,
     private budgetplanService: BudgetplanService,
     private router: Router,
@@ -55,6 +53,7 @@ export class BudgetplanComponent implements OnInit, OnDestroy {
           )
       }))
   }
+  
   public navigate(id: string) {
     const month = this.months?.months.find((m) => m.id === id)
 

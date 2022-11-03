@@ -13,5 +13,9 @@ export class OutcomeService {
   public getOutcomes(): Observable<OutComeResponse> {
     return this.httpclient.get<OutComeResponse>('/outcomes');
   }
+
+  public getOutcomesForMonth(monthId: string): Observable<Outcome[]> {
+    return this.httpclient.get<Outcome[]>(`/Outcomes/getAllOutcomesByMonth/${monthId}`);
+  }
 }
 
