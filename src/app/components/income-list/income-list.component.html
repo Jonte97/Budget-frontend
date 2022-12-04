@@ -1,0 +1,11 @@
+<div class="income-list-component">
+  <ul class="outcome-list-component" *ngIf="incomes">
+    <li *ngFor="let income of incomes">
+      <app-income-item 
+      (saveincomeDTO)="getIncomesSub()" 
+      [incomeDTO]="income"
+      (deleteIncomeDTO)="getIncomesSub()"
+      ></app-income-item>
+    </li>
+  </ul>
+</div>

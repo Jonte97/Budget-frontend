@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { concatMap, map, Subscription } from 'rxjs';
-import { MonthService } from 'src/domain/services/month.service';
-import { BudgetplanService } from 'src/domain/services/budgetplan.service';
+import { MonthService } from 'src/domain/services/month/month.service';
+import { BudgetplanService } from 'src/domain/services/budget/budgetplan.service';
 import { Month } from 'src/domain/models/response-models/month/month-response';
 
 @Component({

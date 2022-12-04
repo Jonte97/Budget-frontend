@@ -11,11 +11,15 @@ import { BudgetplanComponent } from './components/budgetplan/budgetplan.componen
 import { HeaderComponent } from './components/header/header.component';
 import { environment } from 'src/environments/environment';
 import { AddOutcomeComponent } from './components/add-outcome/add-outcome.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategoryNavbarComponent } from './components/category-navbar/category-navbar.component';
 import { OutcomeListComponent } from './components/outcome-list/outcome-list.component';
 import { OutcomeItemComponent } from './components/outcome-item/outcome-item.component';
 import { MonthNavigatorComponent } from './components/month-navigator/month-navigator.component';
+import { IncomeSectionComponent } from './components/income-section/income-section.component';
+import { IncomeListComponent } from './components/income-list/income-list.component';
+import { IncomeItemComponent } from './components/income-item/income-item.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,8 +33,17 @@ import { MonthNavigatorComponent } from './components/month-navigator/month-navi
     OutcomeListComponent,
     OutcomeItemComponent,
     MonthNavigatorComponent,
+    IncomeSectionComponent,
+    IncomeListComponent,
+    IncomeItemComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
+  ],
   providers: [{ provide: 'environment', useValue: environment }],
   bootstrap: [AppComponent],
 })

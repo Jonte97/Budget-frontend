@@ -4,11 +4,13 @@ import { BaseApiService } from 'src/domain/core/base-api.service';
 import { AddOutcomeForm } from 'src/domain/models/form/AddoutcomeForm';
 import { OutcomeRequest as CreateOutcomeRequest } from 'src/domain/models/request-models/create-outcome-request';
 import { Category } from 'src/domain/models/response-models/categories/categories-response';
+import { IncomeDTO } from 'src/domain/models/response-models/income/incomeDTO';
 import { Month } from 'src/domain/models/response-models/month/month-response';
 import { Outcome } from 'src/domain/models/response-models/outcomes/outcome-response';
-import { CategoryService } from 'src/domain/services/category.service';
-import { MonthService } from 'src/domain/services/month.service';
-import { OutcomeService } from 'src/domain/services/outcome.service';
+import { CategoryService } from 'src/domain/services/category/category.service';
+import { IncomeService } from 'src/domain/services/income/income.service';
+import { MonthService } from 'src/domain/services/month/month.service';
+import { OutcomeService } from 'src/domain/services/outcome/outcome.service';
 
 @Component({
   selector: 'app-month',
@@ -17,18 +19,23 @@ import { OutcomeService } from 'src/domain/services/outcome.service';
 export class MonthComponent implements OnInit, OnDestroy {
   activeCategory: string | null = null;
   categories: Category[] = [];
-  categorySub$: Subscription | null = null;
-  postOutcomeSub$: Subscription | null = null;
-  outcomeSub$: Subscription | null = null;
-  outcomes: Outcome[] | null = null;
-  isLoading: boolean = false;
   activeMonth: Month | null = null;
+
+  public isLoading: boolean = false;
+  public outcomes: Outcome[] | null = null;
+  public incomes: IncomeDTO[] | null = null;
+
+  private outcomeSub$: Subscription | null = null;
+  private categorySub$: Subscription | null = null;
+  private postOutcomeSub$: Subscription | null = null;
+  private incomeSub$: Subscription | null = null;
 
   constructor(
     private httpClient: BaseApiService,
     private categoryService: CategoryService,
     private outcomeService: OutcomeService,
-    private monthService: MonthService) {
+    private monthService: MonthService,
+    private incomeService: IncomeService) {
     this.activeMonth = this.monthService.getActiveMonth();
   }
 
@@ -39,42 +46,34 @@ export class MonthComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.monthService.activeMonth.subscribe(
-      {
-        next: (month) => {
-          if (month) {
-            this.activeMonth = month;
-            this.getNewOutcomes();
-          }
-        }
-      }
-    );
-    this.getCategories()
+    this.getCategories();
+    this.getNewOutcomes();
   }
 
   public setActiveCategory(id: string): void {
     this.activeCategory = id;
   }
 
+  public getIncomes(): void {
+    const month = this.monthService.getActiveMonth();
+    if (month) {
+      this.incomeSub$ = this.incomeService.getIncomesForMonth(month.id).subscribe({
+        next: (incomes) => {
+          this.incomes = incomes;
+        }
+      });
+    }
+  }
 
   public getNewOutcomes(): void {
-    this.outcomeSub$ = this.monthService.activeMonth.pipe(
-      concatMap(
-        (month) => {
-          this.activeMonth = month;
-          if (month) {
-            return this.outcomeService.getOutcomesForMonth(month.id)
-          }
-          return of(null);
+    const month = this.monthService.getActiveMonth();
+    if (month) {
+      this.outcomeSub$ = this.outcomeService.getOutcomesForMonth(month.id).subscribe({
+        next: (outcomes) => {
+          this.outcomes = outcomes
         }
-      ))
-      .subscribe(
-        {
-          next: (outcomes) => {
-            this.outcomes = outcomes;
-          }
-        }
-      )
+      });
+    }
   }
 
   private getCategories(): void {
@@ -91,13 +90,14 @@ export class MonthComponent implements OnInit, OnDestroy {
       throw new Error();
     }
 
-    const payload = {
+    const payload: CreateOutcomeRequest = {
       amount: outcomeForm.amount,
-      categoryId: this.activeCategory,
+      categoryId: this.activeCategory!,
       name: outcomeForm.name,
       quickAdd: outcomeForm.quickAdd,
-      monthId: this.activeMonth.id
-    } as CreateOutcomeRequest;
+      monthId: this.activeMonth.id,
+      reoccouring: outcomeForm.reocour
+    };
 
     this.isLoading = true;
 

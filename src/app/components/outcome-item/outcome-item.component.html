@@ -5,28 +5,41 @@
       <span>
         {{ outcome.amount }}
       </span>
-      <button class="btn btn-edit" (click)="edit()">Ändra</button>
+      <button class="btn btn-edit" (click)="toggleEdit()">Ändra</button>
       <button class="btn btn-delete" (click)="deleteItem()">X</button>
     </div>
   </div>
 
   <ng-template #editTemplate>
-    <div class="outcome-edit">
+    <form
+      *ngIf="form"
+      [formGroup]="form"
+      class="outcome-edit"
+      (ngSubmit)="save()"
+    >
       <input
         class="input-text"
-        [name]="outcome.id"
+        [name]="'name'"
         type="text"
-        [value]="outcome.name"
+        [formControlName]="'name'"
       />
       <input
         class="input-text"
-        [name]="outcome.id"
-        type="text"
-        [value]="outcome.amount"
+        [name]="'amount'"
+        type="number"
+        [formControlName]="'amount'"
       />
-      <button class="btn btn-save" (click)="save()">Spara</button>
-      <button class="btn btn-delete">X</button>
-    </div>
+      <input
+        [name]="'reoccouring'"
+        type="checkbox"
+        [formControlName]="'reoccouring'"
+        class="input-checkbox"
+      />
+      <input type="submit" class="btn btn-save" value="Spara" />
+      <button (click)="toggleEdit()" type="button" class="btn btn-delete">
+        X
+      </button>
+    </form>
   </ng-template>
 
   <div class="form-control-group"></div>

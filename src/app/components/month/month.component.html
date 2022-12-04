@@ -3,6 +3,15 @@
     (newMonthSelected)="getNewOutcomes()"
     [month]="activeMonth"
   ></app-month-navigator>
+
+  <section>
+    <app-income-section (createIncome)="getIncomes()"></app-income-section>
+    <app-income-list
+      [incomes]="incomes"
+      (getNewIncomes)="getIncomes()"
+    ></app-income-list>
+  </section>
+
   <app-category-navbar
     (changeActiveCategory)="setActiveCategory($event)"
     *ngIf="categories.length > 0"

@@ -1,0 +1,46 @@
+<section>
+  <div *ngIf="incomeForm">
+    <h1>Inkomst</h1>
+    <form (ngSubmit)="submit()" [formGroup]="incomeForm">
+      <div>
+        <label for="name">Name</label>
+        <input
+          formControlName="name"
+          name="name"
+          class="input-text"
+          type="text"
+        />
+      </div>
+      <div>
+        <label for="category">Kategori</label>
+        <input
+          formControlName="category"
+          name="category"
+          class="input-text"
+          type="text"
+        />
+      </div>
+      <div>
+        <label for="amount">Belopp</label>
+        <input
+          formControlName="amount"
+          name="amount"
+          class="input-text"
+          type="number"
+        />
+      </div>
+      <div>
+        <label for="reoccouring">Återkommande</label>
+        <input
+          formControlName="reoccouring"
+          name="reoccouring"
+          class="input-text"
+          type="checkbox"
+        />
+      </div>
+      <div>
+        <input type="submit" value="Add" />
+      </div>
+    </form>
+  </div>
+</section>

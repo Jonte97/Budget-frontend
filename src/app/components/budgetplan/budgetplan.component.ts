@@ -6,8 +6,8 @@ import { SessionStorageService } from 'src/domain/core/session-storage.service';
 import { GetBudgetPlanResponse } from 'src/domain/models/response-models/budgetplan-response';
 import { GetMonthResponse } from 'src/domain/models/response-models/month/month-response';
 import { Household } from 'src/domain/models/storage-models/storageInterfaces';
-import { BudgetplanService } from 'src/domain/services/budgetplan.service';
-import { MonthService } from 'src/domain/services/month.service';
+import { BudgetplanService } from 'src/domain/services/budget/budgetplan.service';
+import { MonthService } from 'src/domain/services/month/month.service';
 
 @Component({
   selector: 'app-budgetplan',

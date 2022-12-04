@@ -1,0 +1,42 @@
+<div class="outcome-item-component" *ngIf="incomeDTO">
+  <div *ngIf="!editMode; else editTemplate">
+    <div class="outcome-item">
+      <span> {{ incomeDTO.name }}: </span>
+      <span>
+        {{ incomeDTO.amount }}
+      </span>
+      <button class="btn btn-edit" (click)="editToggle()">Ändra</button>
+      <button class="btn btn-delete" (click)="deleteItem()">X</button>
+    </div>
+  </div>
+
+  <ng-template #editTemplate>
+    <div>
+      <form
+        class="incomeDTO-edit"
+        (ngSubmit)="save()"
+        [formGroup]="form"
+        *ngIf="form"
+      >
+        <input
+          class="input-text"
+          [name]="incomeDTO.id"
+          type="text"
+          [value]="incomeDTO.name"
+          formControlName="name"
+        />
+        <input
+          class="input-text"
+          [name]="incomeDTO.id"
+          type="text"
+          [value]="incomeDTO.amount"
+          formControlName="amount"
+        />
+        <input type="submit" class="btn btn-save" value="Spara" />
+        <button type="button" class="btn btn-delete" (click)="editToggle()">X</button>
+      </form>
+    </div>
+  </ng-template>
+
+  <div class="form-control-group"></div>
+</div>

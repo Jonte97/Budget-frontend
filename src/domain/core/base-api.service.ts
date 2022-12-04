@@ -19,7 +19,7 @@ export class BaseApiService {
     const budgetplanId = this.localStorageService.getValue<string>('budgetplanId') ?? '';
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'x-budgetplan': budgetplanId });
     const options = { headers }
-    return this.httpClient.get(this.environment.apiBaseUrl + url, options).pipe(map((res) => res)) as Observable<any>;
+    return this.httpClient.get(this.environment.apiBaseUrl + url, options).pipe(map((res) => res)) as Observable<T>;
   }
 
   post<T>(url: string, model: any): Observable<any> {
